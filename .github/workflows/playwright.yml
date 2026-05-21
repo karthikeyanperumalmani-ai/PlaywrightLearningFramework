@@ -31,7 +31,7 @@ jobs:
 
       # ✅ Run only API tests (optional filter)
       - name: Run Playwright Tests
-        run: npx playwright test --headed
+        run: npx playwright test
 
       # ✅ Upload reports even if tests fail
       - name: Upload Playwright Report

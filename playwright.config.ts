@@ -6,7 +6,7 @@ dotenv.config({ path: `.env.${process.env.ENV || 'qa'}` })
 
 // Read values from env
 const browser = process.env.BROWSER || 'chromium';
-const isHeadless = process.env.HEADLESS !== 'false'
+const isHeadless = process.env.HEADLESS !== 'false';
 const baseURL = process.env.BASE_URL || '';
 
 /**
@@ -55,7 +55,7 @@ export default defineConfig({
 
   use: {
     baseURL: baseURL,                 // ✅ from .env
-    headless: isHeadless,             // ✅ dynamic from .env
+    headless: process.env.CI ? true : isHeadless,           // ✅ dynamic from .env
     trace: 'on-first-retry',
     screenshot: 'on-first-failure',
   },
