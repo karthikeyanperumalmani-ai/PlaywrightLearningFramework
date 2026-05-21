@@ -28,36 +28,54 @@ test("Validate the Get API @api", async () => {
 
 
 
-test("Mulesoft Policy Search @policySearch", async ({ }) => {
-
+test("Mulesoft Policy Search @policySearch", async () => {
     const apiContext = await request.newContext({
         ignoreHTTPSErrors: true
     });
-
     const response = await apiContext.get(
-        "https://qa1-claims-exp-api-bbzxcl.ovzdxz.irl-e1.eu1.cloudhub.io/api/claims/v1/policy-search?",
+        "https://qa1-claims-exp-api-bbzxcl.ovzdxz.irl-e1.eu1.cloudhub.io/api/claims/v1/policy-search",
         {
-
- params: {
-    page: 1,
-    policyNumber: 'AH027490'
-  },
-
-
+            params: {
+                page: 1,              
+                postcode:'TW8 0FT'
+            },
             headers: {
                 "client_id": "0bd81b21874b4b34bf9823e03bf08c9c",
                 "client_secret": "2038dF1C720043228A695b509aeD334d",
-                "Content-Type": "application/json",
-                "Accept": "*/*",                // ✅ important
-                "Connection": "keep-alive"      // ✅ sometimes needed
-
+                "Accept": "application/json"
             }
         }
     );
+    const status = response.status();
+const text = await response.text(); 
 
-    const responseBody = await response.json();
+console.log("Status:", status);
+console.log("Raw Response:", text);
 
-    console.log(response.status());   // ✅ check status
-    console.log(responseBody);        // ✅ print response
+try {
+    const json = JSON.parse(text);
+    console.log("Parsed JSON:", json);
 
+    // ✅ Use parsed JSON directly
+
+
+const policies = json.map((item: any) => ({
+    policyNumber: item.policyNumber,
+    address: item.address
+}));
+
+console.log("Policies:", policies);
+
+console.log("***********************************")
+    
+    json
+  .filter((item: any) => item.address?.includes("Flat 21"))
+  .forEach((item: any) => {
+      console.log(`Policy: ${item.policyNumber} | Address: ${item.address}`);
+  });
+} catch (err) {
+    console.log("Response is not valid JSON");
+}
+
+    
 });

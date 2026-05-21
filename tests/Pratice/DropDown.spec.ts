@@ -22,7 +22,7 @@ test("Handling the dropdown @dropdown", async ({ page }) => {
     ``
     await expect(page.locator('#dropdown option:checked')).toHaveText("Option 1");
     await page.locator("//select[@id='dropdown']").selectOption({ label: "Option 2" });
-    await expect(page.locator('#dropdown option:checked')).toHaveText("Option 1");
+    await expect(page.locator('#dropdown option:checked')).toHaveText("Option 2");
 });
 
 test("Handling the dropdown @innerhtml", async ({ page }) => {
