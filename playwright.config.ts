@@ -6,7 +6,7 @@ dotenv.config({ path: `.env.${process.env.ENV || 'qa'}` })
 
 // Read values from env
 const browser = process.env.BROWSER || 'chromium';
-const isHeadless = process.env.HEADLESS === 'true';
+const isHeadless = process.env.HEADLESS !== 'false'
 const baseURL = process.env.BASE_URL || '';
 
 /**
