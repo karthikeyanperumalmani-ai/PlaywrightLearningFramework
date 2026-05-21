@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx playwright test --list" 
+    "test:qa1": "cross-env ENV=qa1 npx playwright test --grep \"^.*@policySearch.*$\""
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,12 @@
   "homepage": "https://github.com/karthikeyanperumalmani-ai/PlaywrightLearningFramework#readme",
   "devDependencies": {
     "@playwright/test": "^1.59.1",
-    "@types/node": "^25.6.2"
+    "@types/dotenv": "^6.1.1",
+    "@types/node": "^25.6.2",
+    "cross-env": "^10.1.0",
+    "monocart-reporter": "^2.11.2"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2"
   }
 }
