@@ -2,7 +2,7 @@ import { defineConfig, devices } from '@playwright/test';
 import * as dotenv from 'dotenv';
 
 // ✅ Load .env variables
-dotenv.config({ path: `.env.${process.env.ENV || 'qa'}` })
+dotenv.config({ path: `.env.${process.env.ENV || 'qa1'}` })
 
 // Read values from env
 const browser = process.env.BROWSER || 'chromium';
