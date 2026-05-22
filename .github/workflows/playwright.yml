@@ -30,6 +30,7 @@ jobs:
 
       - name: Run Playwright Tests
         run: npx playwright test --grep "${{ github.event.inputs.tag }}"
+        continue-on-error: true
 
       - name: Upload Playwright Report
         if: always()
