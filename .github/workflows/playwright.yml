@@ -28,7 +28,6 @@ jobs:
       - name: Install Playwright
         run: npx playwright install --with-deps
 
-      ✅ # Run tests using dynamic tag input
       - name: Run Playwright Tests
         run: npx playwright test --grep "${{ github.event.inputs.tag }}"
 
