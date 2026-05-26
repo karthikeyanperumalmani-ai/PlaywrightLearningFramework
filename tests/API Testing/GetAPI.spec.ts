@@ -55,6 +55,10 @@ console.log("Raw Response:", text);
 try {
     const json = JSON.parse(text);
     console.log("Parsed JSON:", json);
+   const fs = require('fs');
+fs.writeFileSync('testData//response.json', JSON.stringify(json, null, 2));
+
+    
 
     // ✅ Use parsed JSON directly
 
@@ -66,11 +70,18 @@ const policies = json.map((item: any) => ({
 
 console.log("Policies:", policies);
 
+fs.writeFileSync(
+  'testData/Onlyresponse.json',
+  JSON.stringify(policies, null, 2)
+);
+
+
 console.log("***********************************")
     
     json
   .filter((item: any) => item.address?.includes("Flat 21"))
   .forEach((item: any) => {
+   
       console.log(`Policy: ${item.policyNumber} | Address: ${item.address}`);
   });
 } catch (err) {
