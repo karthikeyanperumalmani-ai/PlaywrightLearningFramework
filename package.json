@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test:qa1": "cross-env ENV=qa1 npx playwright test --grep \"^.*@policySearch.*$\""
+    "test:qa1": "cross-env ENV=qa1 npx playwright test --grep \"^.*@diffLocator.*$\""
   },
   "repository": {
     "type": "git",
